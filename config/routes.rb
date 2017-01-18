@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'states#index'
+  resources :states, :bills, :people, :users
+
+  namespace :v1, defaults: { format: :json } do
+    resources :bills
+    resources :people
+    resources :votes
+    resources :states
+    resources :users
+  end
 end

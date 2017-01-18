@@ -1,0 +1,20 @@
+<div id="demo-markers">
+ <ul class="cssmap-pins">
+  <li class="cssmap-pin" data-cssmap-coords="240,505">
+
+   <div class="cssmap-tooltip-content">
+    Phasellus quis est sed turpis sollicitudin venenatis. Praesent eget neque eu eros interdum.
+   </div>
+   <a href="#" class="cssmap-marker"><img src="_demo/pin.png" width="20" height="25" alt="pin"/></a>
+
+  </li>
+  <li class="cssmap-pin" data-cssmap-coords="980,430">
+
+   <div class="cssmap-tooltip-content">
+    Vivamus rutrum consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat.
+   </div>
+   <a href="#" class="cssmap-marker"><img src="_demo/pin.png" width="20" height="25" alt="pin"/></a>
+
+  </li>
+ </ul>
+</div>
