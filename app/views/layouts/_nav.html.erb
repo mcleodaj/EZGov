@@ -1,0 +1,24 @@
+<div class="navbar">
+  <ul>
+    <% if session[:user_id] != nil %>
+      <li><a href="/users"><%=session[:username]%></a></li>
+      <li>
+         <form action="/sessions" method="POST">
+           <input name="_method" type="hidden" value="delete"/>
+           <input type = "submit" value="Logout" class="hide_button">
+         </form>
+      </li>
+    <% else %>
+       <li><a href='/users/new'>Register</a></li>
+       <li><a href='/sessions/new'>Login</a></li>
+    <% end %>
+    <li><a href="/bills">Bills</a></li>
+    <li class="logo"><a href='/'><b>EZ</b><em>gov</em></a><li>
+    <li style="float:right">
+      <form class="offset" action="/search" method="POST">
+        <input style="float:right" type="submit" value="Go" class="hide_button">
+        <input type="text" class="nav_search" name="search[text]" placeholder="Search.."></li>
+      </form>
+    </li>
+  </ul>
+</div>
