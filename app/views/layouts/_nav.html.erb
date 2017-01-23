@@ -15,10 +15,15 @@
     <li><a href="/bills">Bills</a></li>
     <li class="logo"><a href='/'><b>EZ</b><em>gov</em></a><li>
     <li style="float:right">
-      <form class="offset" action="/search" method="POST">
+      <%= form_tag("/searches", method: "post", class: "offset") do %>
+        <%= submit_tag style: "float:right", type: "submit", value: "Go", class: "hide_button" %>
+        <%= text_field_tag :search, "", class: "nav_search", name: "search[text]", placeholder: "Search..." %>
+      <% end %>
+
+      <!-- <form class="offset" action="/searches" method="POST">
         <input style="float:right" type="submit" value="Go" class="hide_button">
         <input type="text" class="nav_search" name="search[text]" placeholder="Search.."></li>
-      </form>
+      </form> -->
     </li>
   </ul>
 </div>

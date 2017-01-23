@@ -1,0 +1,35 @@
+<div class="container">
+  <h2><%= @bill.name %></h2>
+  <div class="grab">
+    <p><b>Full Bill:</b> <a href="<%= @bill.full_bill %>"><%= @bill.full_bill %></a></p>
+    <p><b>Type:</b> <%= @bill.bill_type.capitalize %></p>
+    <p><b>Alive:</b> <%= @bill.is_alive=="t" ? "True" : "False" %>  <b>Current:</b> <%= @bill.is_current=="t" ? "True" : "False" %></p>
+    <p><b>Status:</b> <%= @bill.current_status.capitalize %>  <b>Last Action On:</b> <%= @bill.current_status_date %></p>
+    <p><b>Introduced On:</b> <%= @bill.introduced_date.capitalize %></p>
+    <% if @bill.sponsor_id != nil %>
+      <% person = Person.find(@bill.sponsor_id) %>
+      <p><b>Sponsor: </b>
+        <a href = <%= "/people/#{person.id}" %>>
+          <%= person.firstname %>
+          <%= person.lastname %>
+        </a>
+      </p>
+    <% end %>
+    <% if 1==0 %>
+      <% if !current_user.bills.include?(@bill) %>
+        <div class="form-holder">
+          <form class="sub-form" action="/bills/<%=@bill.id%>" method="POST">
+            <input type = "submit" value="Follow">
+          </form>
+        </div>
+      <% else %>
+        <div class="form-holder">
+          <form class="unsub-form" action="/bills/<%=@bill.id%>" method="POST">
+            <input type = "hidden" name = "_method" value="DELETE">
+            <input type = "submit" value="Unfollow">
+          </form>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

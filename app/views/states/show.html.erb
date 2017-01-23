@@ -1,0 +1,23 @@
+<div class="container flex flex-row">
+  <div class="column col-1-3">
+    <h1><%= @state.name %></h1>
+    <% people = @state.people %>
+
+    <h3> Senators </h3>
+    <% people.each do |person| %>
+      <% if person.role_type == "senator" %>
+        <a class="person-link" href = <%= "../people/#{person.id}" %>><%= person.firstname %> <%= person.lastname %> (<%= person.party[0].capitalize %>)</a><br>
+      <% end %>
+    <% end %>
+
+    <h3> Representatives</h3>
+    <% people.each do |person| %>
+      <% if person.role_type == "representative"%>
+        <a class="person-link" href = <%= "../people/#{person.id}" %>><%= person.firstname %> <%= person.lastname %> (<%= person.party[0].capitalize %>)</a><br>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="column col-2-3">
+    <!-- items are appended here -->
+  </div>
+</div>

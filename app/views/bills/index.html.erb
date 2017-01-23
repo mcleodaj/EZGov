@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="flex flex-centered">
+    <h1>Active Bills</h1>
+  </div>
+  <% @bills.each do |bill| %>
+    <div class="small-bord-pad bot-pad">
+      <a href=<%= "/bills/#{bill.id}" %>><%= bill.name %></a><br>
+    </div>
+  <% end %>
+</div>

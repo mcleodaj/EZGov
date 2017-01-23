@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="grab">
+    <div class="info">
+      <h2> <%= @person.firstname %> <%= @person.lastname %></h2>
+      <p><b>Description:</b> <%= @person.description %></p>
+      <p><b>Gender:</b> <%= @person.gender.capitalize %></p>
+      <p><b>Party:</b> <%= @person.party.capitalize %>  <b>Role:</b> <%= @person.role_type.capitalize %></p>
+      <p><b>Address:</b> <%= @person.address %> </p>
+      <p><b>Phone:</b> <%= @person.phone %> </p>
+      <p><b>Website</b>
+        <a href = "<%= @person.website %>">
+          <%= @person.website %>
+        </a>
+      </p>
+      <% if 1==0 %>
+        <% if !current_user.people.include?(@person) %>
+        <div class="form-holder">
+          <form class="sub-form" action="/people/<%=@person.id%>" method="POST">
+            <input type = "submit" value="Follow">
+          </form>
+        </div>
+        <% else %>
+        <div class="form-holder">
+          <form class="unsub-form" action="/people/<%=@person.id%>" method="POST">
+            <input type = "hidden" name = "_method" value="DELETE">
+            <input type = "submit" value="Unfollow">
+          </form>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% unless @person.sponsored_bills.empty? %>
+      <div class="top-bord-pad">
+        <h2>Sponsored Bills</h2>
+        <% @person.sponsored_bills.each do |bill| %>
+          <a class="bill-link" href=<%= "../bills/#{bill.id}" %>><h4><%= bill.name %></h4></a>
+        <% end %>
+      </div>
+      <div class="for-show top-bord-pad">
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Votes</h2>
+  <% @person.votes.each do |vote| %>
+    <div class="small-bord-pad">
+      <a href="../bills/<%= vote.bill_id %>"><h3><%= vote.bill.name %></h3></a>
+      <p><b>Vote: </b><%= vote.vote %> <b>Type: </b><%= vote.vote_type.capitalize %> <b>Vote Date: </b> <%=vote.vote_date %></p>
+      <p><b>Question: </b><%= vote.question %></p>
+    </div>
+  <% end %>
+</div>

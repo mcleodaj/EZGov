@@ -1,0 +1,33 @@
+<div class="container">
+  <% unless @people.empty? %>
+    <% people = @people %>
+
+    <h3> Senators </h3>
+    <ul>
+      <% people.each do |person| %>
+        <% if person.role_type == "senator" %>
+          <li class="bot-pad"><a class="bot-marg" href = <%= "../people/#{person.id}" %>><b><%= person.firstname %> <%= person.lastname %></b> (<%= person.party[0].capitalize %>)  -  <%= person.state.name %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <h3> Representatives</h3>
+    <ul>
+      <% people.each do |person| %>
+        <% if person.role_type == "representative"%>
+          <li class="bot-pad"><a class="bot-marg" href = <%= "../people/#{person.id}" %>><b><%= person.firstname %> <%= person.lastname %></b> (<%= person.party[0].capitalize %>)  -  <%= person.state.name %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+    <% unless @bills.empty? %>
+      <div class="top-bord-pad">
+        <h2>Bills</h2>
+        <% @bills.each do |bill| %>
+          <a href=<%= "../bills/#{bill.id}" %>><h4><%= bill.name %></h4></a>
+        <% end %>
+      </div>
+      <div class="for-show top-bord-pad">
+      </div>
+    <% end %>
+</div>
+<br>
