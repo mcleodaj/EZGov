@@ -1,17 +1,24 @@
 <div class="container">
   <div class="grab">
-    <div class="info">
-      <h2> <%= @person.firstname %> <%= @person.lastname %></h2>
-      <p><b>Description:</b> <%= @person.description %></p>
-      <p><b>Gender:</b> <%= @person.gender.capitalize %></p>
-      <p><b>Party:</b> <%= @person.party.capitalize %>  <b>Role:</b> <%= @person.role_type.capitalize %></p>
-      <p><b>Address:</b> <%= @person.address %> </p>
-      <p><b>Phone:</b> <%= @person.phone %> </p>
-      <p><b>Website</b>
-        <a href = "<%= @person.website %>">
-          <%= @person.website %>
-        </a>
-      </p>
+    <div class="info flex flex-row">
+      <div class="pic column col-1-3">
+        <h2> <%= @person.firstname %> <%= @person.lastname %></h2>
+        <div class="block">
+          <img src="https://www.govtrack.us/data/photos/<%= @person.identification %>-200px.jpeg"></img>
+        </div>
+      </div>
+      <div class="text column col-2-3">
+        <p><b>Description:</b> <%= @person.description %></p>
+        <p><b>Gender:</b> <%= @person.gender.capitalize %></p>
+        <p><b>Party:</b> <%= @person.party.capitalize %>  <b>Role:</b> <%= @person.role_type.capitalize %></p>
+        <p><b>Address:</b> <%= @person.address %> </p>
+        <p><b>Phone:</b> <%= @person.phone %> </p>
+        <p><b>Website</b>
+          <a href = "<%= @person.website %>">
+            <%= @person.website %>
+          </a>
+        </p>
+      </div>
       <% if 1==0 %>
         <% if !current_user.people.include?(@person) %>
         <div class="form-holder">

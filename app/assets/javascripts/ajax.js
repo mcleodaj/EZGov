@@ -21,7 +21,7 @@ var personClicker = function () {
       var html = $(partial)
       var toAppend = $(html).find('.grab')[0]
       $('.col-2-3').append(toAppend)
-      $('.info').append(fullPage)
+      $('.text').append(fullPage)
     })
     .fail(function () {
       console.log('request failed')
